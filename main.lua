@@ -227,6 +227,15 @@ function love.update(dt)
                 ball:reset()
             end
         end
+
+        -- player 2
+        if ball.y < player2.y then
+            player2.dy = -PADDLE_SPEED/1.75
+        elseif ball.y > player2.y then
+            player2.dy = PADDLE_SPEED/1.75
+        else
+            player2.dy = 0
+        end
     end
 
     --
@@ -239,15 +248,6 @@ function love.update(dt)
         player1.dy = PADDLE_SPEED
     else
         player1.dy = 0
-    end
-
-    -- player 2
-    if ball.y < player2.y then
-        player2.dy = -PADDLE_SPEED/1.75
-    elseif ball.y > player2.y then
-        player2.dy = PADDLE_SPEED/1.75
-    else
-        player2.dy = 0
     end
 
     -- update our ball based on its DX and DY only if we're in play state;
